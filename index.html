@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal portfolio of Urdinov Nurel – intern developer">
+  <title>Urdinov Nurel | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+:root {
+  --bg: #0f172a;
+  --bg-alt: #162036;
+  --card: #1e293b;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-2: #818cf8;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  line-height: 1.7;
+}
+
+.text-muted { color: var(--muted) !important; }
+.accent { color: var(--accent); }
+
+/* Navbar */
+.navbar {
+  background: rgba(15, 23, 42, .85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+.navbar .dot { color: var(--accent); }
+.nav-link { color: var(--muted) !important; transition: color .2s; }
+.nav-link:hover, .nav-link.active { color: var(--accent) !important; }
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  padding: 7rem 0 4rem;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(129, 140, 248, .25), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(56, 189, 248, .18), transparent 40%),
+    var(--bg);
+}
+.eyebrow { color: var(--accent); letter-spacing: .15em; text-transform: uppercase; font-weight: 600; margin-bottom: .25rem; }
+.avatar {
+  width: 280px; height: 280px; object-fit: cover; border-radius: 50%;
+  border: 4px solid var(--accent);
+  box-shadow: 0 0 0 10px rgba(56, 189, 248, .12), 0 20px 60px rgba(0, 0, 0, .5);
+}
+
+/* Buttons */
+.btn-accent {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #0b1220; font-weight: 600; border: 0;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-accent:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(56, 189, 248, .35); color: #0b1220; }
+.btn-outline-accent { border: 1px solid var(--accent); color: var(--accent); }
+.btn-outline-accent:hover { background: var(--accent); color: #0b1220; }
+
+/* Sections */
+.section { padding: 5.5rem 0; }
+.section.alt { background: var(--bg-alt); }
+.section-title { text-align: center; font-weight: 700; margin-bottom: 1rem; position: relative; }
+.section-title::after {
+  content: ""; display: block; width: 60px; height: 4px; margin: .6rem auto 0;
+  border-radius: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.card-soft, .project, .fav {
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, .06);
+  border-radius: 1rem;
+  color: var(--text);
+}
+.card-soft i { color: var(--accent); margin-right: .5rem; }
+.form-control {
+  background: #0f172a; border: 1px solid rgba(255, 255, 255, .12); color: var(--text);
+}
+.form-control:focus { background: #0f172a; color: var(--text); border-color: var(--accent); box-shadow: 0 0 0 .2rem rgba(56, 189, 248, .2); }
+
+/* Skills */
+.badge-skill {
+  display: inline-block; margin: .25rem .25rem 0 0; padding: .35rem .85rem;
+  border-radius: 999px; font-size: .9rem;
+  background: rgba(56, 189, 248, .12); color: var(--accent); border: 1px solid rgba(56, 189, 248, .3);
+}
+
+/* Timeline */
+.timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 2rem; }
+.timeline::before {
+  content: ""; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(var(--accent), var(--accent-2));
+}
+.timeline-item { position: relative; margin-bottom: 2rem; }
+.timeline-item::before {
+  content: ""; position: absolute; left: -2rem; top: .45rem; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(56, 189, 248, .2);
+}
+.timeline .year { color: var(--accent); font-weight: 600; font-size: .9rem; }
+.timeline h5 { margin: .15rem 0 .35rem; }
+.timeline p { color: var(--muted); margin: 0; }
+
+/* Projects */
+.project { transition: transform .25s, box-shadow .25s, border-color .25s; }
+.project:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 16px 40px rgba(0, 0, 0, .4); }
+.project-icon { font-size: 2rem; color: var(--accent); }
+.project .card-text { color: var(--muted); }
+.tech { font-size: .85rem; color: var(--accent-2); font-weight: 600; margin-bottom: 0; }
+
+/* Favourites */
+.fav { padding: 2rem 1rem; height: 100%; transition: transform .25s; }
+.fav:hover { transform: translateY(-5px); }
+.fav i { font-size: 2.4rem; color: var(--accent); }
+.fav h5 { margin-top: .75rem; }
+.fav p { color: var(--muted); margin-bottom: 0; font-size: .95rem; }
+
+/* Socials & footer */
+.socials a { font-size: 1.8rem; color: var(--muted); margin: 0 .6rem; transition: color .2s, transform .2s; display: inline-block; }
+.socials a:hover { color: var(--accent); transform: translateY(-3px); }
+.footer { padding: 1.5rem 0; background: #0b1220; color: var(--muted); font-size: .9rem; }
+
+/* Responsive tweaks */
+@media (max-width: 991.98px) {
+  .navbar-collapse { padding: .75rem 0; }
+  .avatar { width: 220px; height: 220px; }
+}
+@media (max-width: 575.98px) {
+  .section { padding: 4rem 0; }
+  .hero h1 { font-size: 2.5rem; }
+  .hero .btn { display: block; width: 100%; margin: 0 0 .75rem !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+</style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="80">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#home">Urdinov Nurel<span class="dot">.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#academics">Academics</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#favourites">Favourites</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero d-flex align-items-center text-center text-lg-start">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <p class="eyebrow">Hello, I'm</p>
+          <h1 class="display-3 fw-bold">Urdinov Nurel</h1>
+          <p class="lead mb-4">Intern developer · Future software engineer · <span id="typed" class="accent"></span></p>
+          <a href="#projects" class="btn btn-accent btn-lg me-2">View my work</a>
+          <a href="#contact" class="btn btn-outline-light btn-lg">Contact me</a>
+        </div>
+        <div class="col-lg-5 text-center">
+          <!-- Replace with your photo: put it in img/ and change src -->
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODAgMjgwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI4MCI+CiAgPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMzhiZGY4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjODE4Y2Y4Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyODAiIGZpbGw9InVybCgjZykiLz4KICA8Y2lyY2xlIGN4PSIxNDAiIGN5PSIxMDgiIHI9IjQ2IiBmaWxsPSIjMGYxNzJhIiBvcGFjaXR5PSIuODUiLz4KICA8cGF0aCBkPSJNNDAgMjgwYzAtNjIgNDQtMTAwIDEwMC0xMDBzMTAwIDM4IDEwMCAxMDB6IiBmaWxsPSIjMGYxNzJhIiBvcGFjaXR5PSIuODUiLz4KPC9zdmc+Cg==" alt="Portrait of Urdinov Nurel" class="avatar img-fluid">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About me</h2>
+        <div class="row g-4 align-items-center">
+          <div class="col-md-7">
+            <p>Hi! I'm <strong>Urdinov Nurel</strong>, a 22-year-old Computer Science student from Debrecen, Hungary. I'm currently doing an internship at Lime Light, where I'm learning how real-world web projects are built.</p>
+            <p>I enjoy turning ideas into working products, and I'm especially interested in front-end development, responsive design and clean, readable code. When I'm not coding you'll find me playing guitar.</p>
+            <h5 class="mt-4">Skills</h5>
+            <div class="skills">
+              <span class="badge-skill">HTML5</span>
+              <span class="badge-skill">CSS3</span>
+              <span class="badge-skill">JavaScript</span>
+              <span class="badge-skill">Bootstrap</span>
+              <span class="badge-skill">Python</span>
+              <span class="badge-skill">Java</span>
+              <span class="badge-skill">C</span>
+              <span class="badge-skill">C++</span>
+              <span class="badge-skill">Git &amp; GitHub</span>
+              <span class="badge-skill">SQL</span>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="card card-soft p-4">
+              <h5 class="mb-3">Quick facts</h5>
+              <ul class="list-unstyled mb-0">
+                <li class="mb-2"><i class="bi bi-geo-alt"></i> Debrecen, Hungary</li>
+                <li class="mb-2"><i class="bi bi-translate"></i> English, Kyrgyz, Hungarian</li>
+                <li class="mb-2"><i class="bi bi-mortarboard"></i> University of Debrecen · Computer Science</li>
+                <li><i class="bi bi-briefcase"></i> Intern @ Lime Light</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ACADEMICS -->
+    <section id="academics" class="section alt">
+      <div class="container">
+        <h2 class="section-title">Academics</h2>
+        <p class="text-center text-muted mb-5">My academic story, step by step.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="year">2023 – 2027</span>
+            <h5>University of Debrecen – Computer Science</h5>
+            <p>Studying Computer Science and learning programming languages such as Python, Java, C and C++, along with databases and web development.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="year">2026</span>
+            <h5>Internship – Lime Light</h5>
+            <p>Building my first fully responsive website and learning professional workflows with Git and GitHub Pages.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title">Coding projects</h2>
+        <p class="text-center text-muted mb-5">My first project is this website. More are on the way.</p>
+        <div class="row g-4 justify-content-center">
+          <div class="col-12 col-md-8 col-lg-5">
+            <div class="card project h-100">
+              <div class="card-body">
+                <i class="bi bi-phone project-icon"></i>
+                <h5 class="card-title">This Portfolio</h5>
+                <p class="card-text">My first fully responsive website, built during the Lime Light internship and deployed on GitHub Pages.</p>
+                <p class="tech">HTML · CSS · JavaScript · Bootstrap 5</p>
+              </div>
+              <div class="card-footer bg-transparent border-0 pb-3">
+                <a href="https://github.com/GaltarChik/my-portfolio" class="btn btn-sm btn-outline-accent" target="_blank" rel="noopener">View code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. FAVOURITES -->
+    <section id="favourites" class="section alt">
+      <div class="container">
+        <h2 class="section-title">My favourites</h2>
+        <p class="text-center text-muted mb-5">A few things that make me, me.</p>
+        <div class="row g-4 justify-content-center">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="fav text-center">
+              <i class="bi bi-music-note-beamed"></i>
+              <h5>Activities</h5>
+              <p>Playing guitar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Get in touch</h2>
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <form id="contactForm" class="card card-soft p-4" novalidate>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-accent w-100">Send message</button>
+              <div id="formStatus" class="mt-3 text-center" role="status"></div>
+            </form>
+            <div class="text-center mt-4 socials">
+              <a href="https://github.com/GaltarChik" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+              <a href="mailto:tazaurdinov@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer text-center">
+    <div class="container">
+      <p class="mb-0">&copy; <span id="year"></span> Urdinov Nurel. Built with Bootstrap &amp; ♥ during the Lime Light internship.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+// Footer year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Simple typing effect
+(function () {
+  const words = ["Web developer", "Problem solver", "Lifelong learner"];
+  const el = document.getElementById("typed");
+  let w = 0, c = 0, deleting = false;
+  function tick() {
+    const word = words[w];
+    el.textContent = word.slice(0, c);
+    if (!deleting && c < word.length) { c++; setTimeout(tick, 90); }
+    else if (!deleting) { deleting = true; setTimeout(tick, 1400); }
+    else if (c > 0) { c--; setTimeout(tick, 45); }
+    else { deleting = false; w = (w + 1) % words.length; setTimeout(tick, 300); }
+  }
+  tick();
+})();
+
+// Close mobile menu after clicking a link
+document.querySelectorAll("#menu .nav-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    const menu = document.getElementById("menu");
+    if (menu.classList.contains("show")) bootstrap.Collapse.getOrCreateInstance(menu).hide();
+  });
+});
+
+// Contact form (front-end demo; opens the user's mail app)
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const status = document.getElementById("formStatus");
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+  if (!name || !/^\S+@\S+\.\S+$/.test(email) || !message) {
+    status.textContent = "Please fill in all fields with a valid email.";
+    status.className = "mt-3 text-center text-warning";
+    return;
+  }
+  const subject = encodeURIComponent("Portfolio message from " + name);
+  const body = encodeURIComponent(message + "\n\n" + name + " (" + email + ")");
+  window.location.href = "mailto:tazaurdinov@gmail.com?subject=" + subject + "&body=" + body;
+  status.textContent = "Thanks, " + name + "! Your mail app should open now.";
+  status.className = "mt-3 text-center text-success";
+  this.reset();
+});
+
+</script>
+</body>
+</html>
